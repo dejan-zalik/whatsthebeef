@@ -1,19 +1,19 @@
-import problems from '@/problems.json';
 import SearchWrapper from '@/components/SearchWrapper';
 
-interface ProblemProps {
+export type ProblemProps = {
   id: string;
   name: string;
   description: string;
   upvotes: number;
-}
+};
 
-const ProblemsList = () => {
-  const problemList: ProblemProps[] = problems;
+const ProblemsList = async () => {
+  const response = await fetch('http://localhost:3500/problems');
+  const problems: ProblemProps[] = await response.json();
 
   return (
     <section>
-      <SearchWrapper problems={problemList} />
+      <SearchWrapper problems={problems} />
     </section>
   );
 };

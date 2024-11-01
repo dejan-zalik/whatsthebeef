@@ -1,20 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import Problem from './Problem';
+import type { ProblemProps } from '@/components/ProblemsList';
+import Problem from '@/app/problem/[id]/Problem';
 
-interface ProblemProps {
-  id: string;
-  name: string;
-  description: string;
-  upvotes: number;
-}
-
-interface ProblemProp {
-  problems: ProblemProps[];
-}
-
-const SearchWrapper = ({ problems }: ProblemProp) => {
+const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
   const [searchText, setSearchText] = useState('');
 
   const filteredProblems = problems.filter((problem) => {
@@ -41,16 +31,18 @@ const SearchWrapper = ({ problems }: ProblemProp) => {
           }}
         />
       </div>
-      <div className="flex mx-4 px-3">
-        <div className="p-2 italic text-end basis-1/5">total votes</div>
-        <div className="p-2 italic text-center w-full">beef</div>
+      <div className="grid grid-cols-10 mx-4 mt-6">
+        <div className="p-2 italic text-center col-span-3 md:col-span-2">
+          total votes
+        </div>
+        <div className="p-2 italic text-center col-span-7 md:col-span-8"></div>
       </div>
-      <div className="m-3">
+      <div className="my-3 ml-3 mr-9 md:mr-6">
         <ul>
           {filteredProblems.map((problem) => (
             <Problem
               key={problem.id}
-              {...problem}
+              problem={problem}
               totalUpvotes={totalUpvotes}
             />
           ))}

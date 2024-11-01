@@ -9,14 +9,19 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className="max-w-3xl m-auto">
         <Navbar />
-        <main id="main">{children}</main>
+        <main id="main">
+          {modal}
+          {children}
+        </main>
       </body>
     </html>
   );

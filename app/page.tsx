@@ -1,9 +1,12 @@
 import ProblemsList from '@/components/ProblemsList';
+import { ProblemContextProvider } from '@/context/ProblemContext';
 
 const MainPage = () => {
   return (
     <>
-      <ProblemsList />
+      <ProblemContextProvider>
+        <ProblemsList />
+      </ProblemContextProvider>
     </>
   );
 };
