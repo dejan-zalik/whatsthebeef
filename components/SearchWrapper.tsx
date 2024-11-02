@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import type { ProblemProps } from '@/components/ProblemsList';
-import Problem from '@/app/problem/[id]/Problem';
+import Problem from '@/components/Problem';
 
 const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
   const [searchText, setSearchText] = useState('');

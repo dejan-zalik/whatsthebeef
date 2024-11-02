@@ -9,17 +9,20 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  modal,
+  problem_modal,
+  add_problem_modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
+  problem_modal: React.ReactNode;
+  add_problem_modal: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className="max-w-3xl m-auto">
         <Navbar />
         <main id="main">
-          {modal}
+          {add_problem_modal}
+          {problem_modal}
           {children}
         </main>
       </body>

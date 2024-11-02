@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-
 import { useRouter } from 'next/navigation';
+import { X } from 'lucide-react';
 
 export function Modal({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -14,18 +14,21 @@ export function Modal({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <dialog id="my_modal_1" className={isOpen ? 'modal modal-open' : 'modal'}>
-      <div className="modal-box max-w-4xl">
+    <dialog className={isOpen ? 'modal modal-open' : 'modal'}>
+      <div className="modal-box max-w-4xl rounded-lg">
+        <div className="flex justify-center mb-9">
+          <button
+            className="btn btn-ghost btn-circle shadow-md text-red-500"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsOpen(false);
+              handleOpenChange();
+            }}
+          >
+            <X />
+          </button>
+        </div>
         {children}
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setIsOpen(false);
-            handleOpenChange();
-          }}
-        >
-          BUTTON
-        </button>
       </div>
     </dialog>
   );

@@ -1,5 +1,6 @@
 import { Modal } from '@/components/Modal';
 import type { ProblemProps } from '@/components/ProblemsList';
+import ModalContentProblem from '@/components/ModalContentProblem';
 
 type Props = {
   params: {
@@ -18,8 +19,7 @@ const ProblemPage = async ({ params: { id } }: Props) => {
   return (
     <>
       <Modal>
-        <div>{`problem id is ${problem?.id}`}</div>
-        {/* <div>Some text here</div> */}
+        <ModalContentProblem problem={problem} />
       </Modal>
     </>
   );

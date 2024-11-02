@@ -4,7 +4,7 @@ import memeHOM from '@/assets/images/handonmouth.png';
 import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
 
-const FallbackProblemPage = () => {
+const FallbackAddProblemPage = () => {
   useEffect(() => {
     setTimeout(() => {
       redirect('/');
@@ -13,7 +13,7 @@ const FallbackProblemPage = () => {
 
   return (
     <>
-      <div>Fallback problem page here</div>
+      <div>Fallback add problem page here</div>
       <div className="flex justify-center items-center mt-9">
         <img
           className="w-72 h-auto md:w-96"
@@ -25,4 +25,4 @@ const FallbackProblemPage = () => {
   );
 };
 
-export default FallbackProblemPage;
+export default FallbackAddProblemPage;
