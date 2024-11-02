@@ -39,9 +39,9 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
       </div>
       <div className="my-3 ml-3 mr-9 md:mr-6">
         <ul>
-          {filteredProblems.map((problem) => (
+          {filteredProblems.map((problem, index) => (
             <Problem
-              key={problem.id}
+              key={index}
               problem={problem}
               totalUpvotes={totalUpvotes}
             />

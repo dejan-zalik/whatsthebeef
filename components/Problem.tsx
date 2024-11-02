@@ -14,7 +14,7 @@ const Problem = ({
 
   return (
     <>
-      <Link href={`/problem/${problem.id}`} scroll={false}>
+      <Link href={`/problem/${problem._id}`} scroll={false}>
         <li className="m-1 p-1 overflow-hidden text-xl grid grid-cols-10 hover:shadow-md rounded-md cursor-grab">
           <div className="p-2 text-center col-span-3 md:col-span-2">
             {problem.upvotes}

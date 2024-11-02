@@ -1,15 +1,21 @@
 import SearchWrapper from '@/components/SearchWrapper';
+import connectDB from '@/config/database';
+import Problem from '@/models/Problem';
+import convertToSerializableObject from '@/utils/convertToSerializableObject';
+import { ObjectId } from 'bson';
 
 export type ProblemProps = {
-  id: string;
+  _id: ObjectId;
   name: string;
   description: string;
   upvotes: number;
 };
 
 const ProblemsList = async () => {
-  const response = await fetch('http://localhost:3500/problems');
-  const problems: ProblemProps[] = await response.json();
+  await connectDB();
+
+  const problemsDoc = await Problem.find({}).lean();
+  const problems = problemsDoc.map(convertToSerializableObject);
 
   return (
     <section>

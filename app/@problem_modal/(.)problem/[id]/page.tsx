@@ -1,6 +1,9 @@
 import { Modal } from '@/components/Modal';
 import type { ProblemProps } from '@/components/ProblemsList';
 import ModalContentProblem from '@/components/ModalContentProblem';
+import connectDB from '@/config/database';
+import Problem from '@/models/Problem';
+import convertToSerializableObject from '@/utils/convertToSerializableObject';
 
 type Props = {
   params: {
@@ -8,13 +11,11 @@ type Props = {
   };
 };
 
-// const ProblemPage = async () => {
 const ProblemPage = async ({ params: { id } }: Props) => {
-  const response = await fetch(`http://localhost:3500/problems/${id}`, {
-    cache: 'no-store',
-  });
+  await connectDB();
 
-  const problem: ProblemProps = await response.json();
+  const problemDoc = await Problem.findById(id).lean();
+  const problem = convertToSerializableObject(problemDoc);
 
   return (
     <>
