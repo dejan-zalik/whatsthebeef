@@ -7,11 +7,11 @@ export const metadata = {
   description: 'rate problems people agree are most pressing',
 };
 
-interface RootProps {
+type RootProps = {
   children: React.ReactNode;
   problem_modal: React.ReactNode;
   add_problem_modal: React.ReactNode;
-}
+};
 
 const RootLayout = ({
   children,
