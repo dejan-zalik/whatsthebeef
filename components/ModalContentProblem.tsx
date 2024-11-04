@@ -8,15 +8,15 @@ import updateProblemVote from '@/app/actions/updateProblemVote';
 const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
   const router = useRouter();
 
-  const handleDownvote = () => {
+  const handleDownvote = async () => {
     problem.upvotes -= 1;
-    updateProblemVote(problem);
+    await updateProblemVote(problem);
     router.back();
   };
 
-  const handleUpvote = () => {
+  const handleUpvote = async () => {
     problem.upvotes += 1;
-    updateProblemVote(problem);
+    await updateProblemVote(problem);
     router.back();
   };
 
