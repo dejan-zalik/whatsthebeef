@@ -7,15 +7,17 @@ export const metadata = {
   description: 'rate problems people agree are most pressing',
 };
 
+interface RootProps {
+  children: React.ReactNode;
+  problem_modal: React.ReactNode;
+  add_problem_modal: React.ReactNode;
+}
+
 const RootLayout = ({
   children,
   problem_modal,
   add_problem_modal,
-}: {
-  children: React.ReactNode;
-  problem_modal: React.ReactNode;
-  add_problem_modal: React.ReactNode;
-}) => {
+}: RootProps) => {
   return (
     <html lang="en">
       <body className="max-w-3xl m-auto">
