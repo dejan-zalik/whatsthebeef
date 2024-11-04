@@ -12,18 +12,12 @@ const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
     problem.upvotes -= 1;
     await updateProblemVote(problem);
     router.back();
-    // setTimeout(() => {
-    //   router.back();
-    // }, 100);
   };
 
   const handleUpvote = async () => {
     problem.upvotes += 1;
     await updateProblemVote(problem);
     router.back();
-    // setTimeout(() => {
-    //   router.back();
-    // }, 100);
   };
 
   return (
