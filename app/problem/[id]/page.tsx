@@ -8,12 +8,11 @@ const FallbackProblemPage = () => {
   useEffect(() => {
     setTimeout(() => {
       redirect('/');
-    }, 1000);
+    }, 500);
   }, []);
 
   return (
     <>
-      <div>Fallback problem page here</div>
       <div className="flex justify-center items-center mt-9">
         <img
           className="w-72 h-auto md:w-96"

@@ -3,15 +3,25 @@
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 import type { ProblemProps } from '@/components/ProblemsList';
 import { useRouter } from 'next/navigation';
+import updateProblemVote from '@/app/actions/updateProblemVote';
 
 const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
   const router = useRouter();
 
+  const handleDownvote = () => {
+    problem.upvotes -= 1;
+    updateProblemVote(problem);
+    setTimeout(() => {
+      router.back();
+    }, 150);
+  };
+
   const handleUpvote = () => {
     problem.upvotes += 1;
-    console.log(problem);
-
-    router.back();
+    updateProblemVote(problem);
+    setTimeout(() => {
+      router.back();
+    }, 150);
   };
 
   return (
@@ -27,7 +37,13 @@ const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
         >
           <ThumbsUp />
         </button>
-        <button className="btn btn-ghost btn-circle shadow-md mx-3 text-red-500">
+        <button
+          className="btn btn-ghost btn-circle shadow-md mx-3 text-red-500"
+          onClick={(e) => {
+            e.preventDefault();
+            handleDownvote();
+          }}
+        >
           <ThumbsDown />
         </button>
       </div>

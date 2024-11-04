@@ -21,7 +21,7 @@ const Navbar = () => {
         </div>
         <div className="navbar justify-end mr-3 md:ml-6">
           <button
-            className="btn btn-ghost btn-circle"
+            className="btn btn-ghost btn-circle text-green-500"
             onClick={() => {
               const element = document.getElementById(
                 'modalAddProblem'

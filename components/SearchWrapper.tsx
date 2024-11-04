@@ -7,8 +7,12 @@ import Problem from '@/components/Problem';
 const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
   const [searchText, setSearchText] = useState('');
 
-  const filteredProblems = problems.filter((problem) => {
-    return problem.name.toLowerCase().includes(searchText.toLowerCase());
+  const removeZeroVoteProblems = problems.filter((problem) => {
+    return problem.upvotes >= 0;
+  });
+
+  const filteredProblems = removeZeroVoteProblems.filter((problem) => {
+    return problem.title.toLowerCase().includes(searchText.toLowerCase());
   });
   filteredProblems.sort((a, b) => b.upvotes - a.upvotes);
 
@@ -31,6 +35,12 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
           }}
         />
       </div>
+      {/* <div className="grid grid-cols-4 mx-24 mt-6">
+        <div className="text-center shadow-custom">1</div>
+        <div className="text-center shadow-lg">2</div>
+        <div className="text-center">3</div>
+        <div className="text-center">4</div>
+      </div> */}
       <div className="grid grid-cols-10 mx-4 mt-6">
         <div className="p-2 italic text-center col-span-3 md:col-span-2">
           total votes

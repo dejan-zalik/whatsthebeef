@@ -6,7 +6,7 @@ import { ObjectId } from 'bson';
 
 export type ProblemProps = {
   _id: ObjectId;
-  name: string;
+  title: string;
   description: string;
   upvotes: number;
 };

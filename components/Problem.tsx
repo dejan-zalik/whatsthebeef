@@ -23,7 +23,7 @@ const Problem = ({
             style={{ width: `${problemWidth}%` }}
             className="bg-green-500 whitespace-nowrap p-2 col-span-7 md:col-span-8"
           >
-            {problem.name}
+            {problem.title}
           </div>
         </li>
       </Link>
