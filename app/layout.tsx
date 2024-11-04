@@ -7,27 +7,22 @@ export const metadata = {
   description: 'rate problems people agree are most pressing',
 };
 
-const RootLayout = ({
+export default function RootLayout({
   children,
   problem_modal,
-  add_problem_modal,
 }: {
   children: React.ReactNode;
   problem_modal: React.ReactNode;
-  add_problem_modal: React.ReactNode;
-}) => {
+}) {
   return (
     <html lang="en">
       <body className="max-w-3xl m-auto">
         <Navbar />
         <main id="main">
-          {add_problem_modal}
           {problem_modal}
           {children}
         </main>
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}
