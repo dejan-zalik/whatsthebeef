@@ -13,7 +13,7 @@ const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
     updateProblemVote(problem);
     setTimeout(() => {
       router.back();
-    }, 150);
+    }, 300);
   };
 
   const handleUpvote = () => {
@@ -21,7 +21,7 @@ const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
     updateProblemVote(problem);
     setTimeout(() => {
       router.back();
-    }, 150);
+    }, 300);
   };
 
   return (
