@@ -1,6 +1,6 @@
 import FallbackRedirect from '@/components/FallbackRedirect';
 
-const page = () => {
+const NotFoundPage = () => {
   return (
     <>
       <FallbackRedirect />
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default NotFoundPage;
