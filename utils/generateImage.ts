@@ -1,10 +1,11 @@
 import memeBGW from '@/assets/images/blackgirlwat.png';
 import memeMB from '@/assets/images/mrbean.png';
+import memeWOL from '@/assets/images/watoldlady.png';
 
-const imagesArray = new Array(memeBGW.src, memeMB.src);
+const imagesArray = new Array(memeBGW.src, memeMB.src, memeWOL.src);
 
 const generateImage = () => {
-  const currentImage = imagesArray[Math.round(Math.random())];
+  const currentImage = imagesArray[Math.floor(Math.random() * 3)];
   const mainElement = document.getElementById('main');
 
   const diffTop = mainElement?.offsetTop;
