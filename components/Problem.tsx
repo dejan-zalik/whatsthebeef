@@ -2,6 +2,7 @@
 
 import type { ProblemProps } from '@/components/ProblemsList';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const Problem = ({
   totalUpvotes,
@@ -10,12 +11,21 @@ const Problem = ({
   totalUpvotes: number;
   problem: ProblemProps;
 }) => {
+  const [loading, setLoading] = useState(false);
   const problemWidth = (problem.upvotes / totalUpvotes) * 100;
 
   return (
     <>
       <Link href={`/problem/${problem._id}`} scroll={false}>
-        <li className="m-1 p-1 overflow-hidden text-xl grid grid-cols-10 hover:shadow-md rounded-md cursor-grab">
+        <li
+          onClick={() => {
+            setLoading(true);
+            document.body.style.cursor = 'wait';
+          }}
+          className={`m-1 p-1 overflow-hidden text-xl grid grid-cols-10 hover:shadow-md rounded-md ${
+            loading ? 'cursor-wait' : 'cursor-grab'
+          }`}
+        >
           <div className="p-2 text-center col-span-3 md:col-span-2">
             {problem.upvotes}
           </div>

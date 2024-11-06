@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 
@@ -11,7 +11,14 @@ export function Modal({ children }: { children: React.ReactNode }) {
 
   const handleOpenChange = () => {
     router.back();
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
+
+  useEffect(() => {
+    document.body.style.cursor = 'default';
+  }, []);
 
   return (
     <dialog className={isOpen ? 'modal modal-open' : 'modal'}>
