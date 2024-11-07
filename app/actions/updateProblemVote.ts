@@ -8,7 +8,11 @@ import type { ProblemProps } from '@/components/ProblemsList';
 const updateProblemVote = async (problem: ProblemProps) => {
   await connectDB();
 
-  await Problem.findByIdAndUpdate(problem._id, problem);
+  if (problem.upvotes < 0) {
+    const currentProblem = await Problem.findById(problem._id).deleteOne();
+  } else {
+    await Problem.findByIdAndUpdate(problem._id, problem);
+  }
 
   revalidatePath('/', 'layout');
 };

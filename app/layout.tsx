@@ -1,5 +1,6 @@
 import '@/assets/styles/globals.css';
 import Navbar from '@/components/Navbar';
+import { Providers } from '@/context/Providers';
 
 export const metadata = {
   title: 'whatsthebeef',
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="max-w-3xl m-auto">
-        <Navbar />
-        <main id="main">
-          {problem_modal}
-          {children}
-        </main>
+        <Providers>
+          <Navbar />
+          <main id="main">
+            {problem_modal}
+            {children}
+          </main>
+        </Providers>
       </body>
     </html>
   );

@@ -13,6 +13,7 @@ export default async function ProblemPage(props: { params: Params }) {
   await connectDB();
 
   const problemDoc = await Problem.findById(problemId).lean();
+  if (!problemDoc) return;
   const problem = convertToSerializableObject(problemDoc);
 
   return (

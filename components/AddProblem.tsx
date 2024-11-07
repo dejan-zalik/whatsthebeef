@@ -53,6 +53,10 @@ const AddProblem = () => {
                   if (titleText !== '' && descriptionText !== '') {
                     element.close();
                   }
+                  setTimeout(() => {
+                    setTitleText('');
+                    setDescriptionText('');
+                  }, 100);
                 }}
                 className="btn btn-ghost shadow-md rounded-xl border font-bold"
               >

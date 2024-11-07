@@ -33,7 +33,9 @@ const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
 
   return (
     <>
-      <div className="flex justify-center my-6">{problem?.description}</div>
+      <div className="flex justify-center my-6">
+        {problem?.description.trim()}
+      </div>
       <div className="flex justify-center my-6">
         {isLoadingUp ? (
           <button className="btn btn-ghost btn-circle shadow-md mx-3 text-green-500">

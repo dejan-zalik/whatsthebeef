@@ -1,11 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import type { ProblemProps } from '@/components/ProblemsList';
 import Problem from '@/components/Problem';
+import { LoaderCircle } from 'lucide-react';
+import { PlaceholderContext } from '@/context/PlaceholderContext';
 
 const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
   const [searchText, setSearchText] = useState('');
+  const { showPlaceholder } = useContext(PlaceholderContext);
 
   const removeZeroVoteProblems = problems.filter((problem) => {
     return problem.upvotes >= 0;
@@ -22,7 +25,6 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
       return problem.upvotes;
     })
     .reduce((a: number, b: number) => a + b, 0);
-
   return (
     <>
       <div className="container m-auto py-4 px-6 text-center">
@@ -35,12 +37,6 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
           }}
         />
       </div>
-      {/* <div className="grid grid-cols-4 mx-24 mt-6">
-        <div className="text-center shadow-custom">1</div>
-        <div className="text-center shadow-lg">2</div>
-        <div className="text-center">3</div>
-        <div className="text-center">4</div>
-      </div> */}
       <div className="grid grid-cols-10 mx-4 mt-6">
         <div className="p-2 italic text-center col-span-3 md:col-span-2">
           total votes
@@ -57,6 +53,13 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
             />
           ))}
         </ul>
+        {showPlaceholder && (
+          <dialog className="modal modal-open">
+            <div className="flex align-middle justify-center">
+              <LoaderCircle size={96} className="animate-spin text-green-500" />
+            </div>
+          </dialog>
+        )}
       </div>
     </>
   );

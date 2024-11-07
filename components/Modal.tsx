@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
+import { PlaceholderContext } from '@/context/PlaceholderContext';
 
 export function Modal({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(true);
+  const { setShowPlaceholder } = useContext(PlaceholderContext);
 
   const router = useRouter();
 
@@ -18,6 +20,7 @@ export function Modal({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.body.style.cursor = 'default';
+    setShowPlaceholder(false);
   }, []);
 
   return (
