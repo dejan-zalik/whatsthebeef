@@ -22,7 +22,7 @@ const Problem = ({
           onClick={() => {
             setShowPlaceholder(true);
           }}
-          className="m-1 p-1 overflow-hidden text-xl grid grid-cols-10 hover:shadow-md rounded-md cursor-grab"
+          className="m-1 p-1 overflow-hidden text-md md:text-xl grid grid-cols-10 hover:shadow-md rounded-md cursor-grab"
         >
           <div className="p-2 text-center col-span-3 md:col-span-2">
             {problem.upvotes}

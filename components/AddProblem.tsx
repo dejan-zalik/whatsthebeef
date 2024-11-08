@@ -2,10 +2,18 @@
 
 import addProblem from '@/app/actions/addProblem';
 import { useState } from 'react';
+import AddProblemLoader from '@/components/AddProblemLoader';
 
 const AddProblem = () => {
   const [titleText, setTitleText] = useState('');
   const [descriptionText, setDescriptionText] = useState('');
+
+  const handleButtonClick = () => {
+    setTimeout(() => {
+      setTitleText('');
+      setDescriptionText('');
+    }, 100);
+  };
 
   return (
     <>
@@ -46,24 +54,14 @@ const AddProblem = () => {
                     e.preventDefault();
                   }
                 }}
-                onClick={() => {
-                  const element = document.getElementById(
-                    'modalAddProblem'
-                  ) as HTMLDialogElement;
-                  if (titleText !== '' && descriptionText !== '') {
-                    element.close();
-                  }
-                  setTimeout(() => {
-                    setTitleText('');
-                    setDescriptionText('');
-                  }, 100);
-                }}
+                onClick={() => handleButtonClick()}
                 className="btn btn-ghost shadow-md rounded-xl border font-bold"
               >
                 Add
               </button>
             </div>
           </div>
+          <AddProblemLoader />
         </form>
       </div>
     </>

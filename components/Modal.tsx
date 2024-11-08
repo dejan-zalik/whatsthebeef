@@ -19,7 +19,6 @@ export function Modal({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    document.body.style.cursor = 'default';
     setShowPlaceholder(false);
   }, []);
 

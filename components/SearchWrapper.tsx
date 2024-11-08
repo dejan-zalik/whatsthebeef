@@ -10,11 +10,7 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
   const [searchText, setSearchText] = useState('');
   const { showPlaceholder } = useContext(PlaceholderContext);
 
-  const removeZeroVoteProblems = problems.filter((problem) => {
-    return problem.upvotes >= 0;
-  });
-
-  const filteredProblems = removeZeroVoteProblems.filter((problem) => {
+  const filteredProblems = problems.filter((problem) => {
     return problem.title.toLowerCase().includes(searchText.toLowerCase());
   });
   filteredProblems.sort((a, b) => b.upvotes - a.upvotes);
@@ -25,6 +21,7 @@ const SearchWrapper = ({ problems }: { problems: ProblemProps[] }) => {
       return problem.upvotes;
     })
     .reduce((a: number, b: number) => a + b, 0);
+
   return (
     <>
       <div className="container m-auto py-4 px-6 text-center">
