@@ -33,7 +33,10 @@ const ModalContentProblem = ({ problem }: { problem: ProblemProps }) => {
 
   return (
     <>
-      <div className="flex justify-center my-6">
+      <div className="flex justify-center my-6 underline text-center">
+        {problem?.title.trim()}
+      </div>
+      <div className="flex justify-center my-6 italic text-justify">
         {problem?.description.trim()}
       </div>
       <div className="flex justify-center my-6">
